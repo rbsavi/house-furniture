@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      House #<%= @the_house.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/houses">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_house/<%= @the_house.id %>">
+          Delete house
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @the_house.owner_id %>
+      </dd>
+
+      <dt>
+        Rooms count
+      </dt>
+      <dd>
+        <%= @the_house.rooms_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_house.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_house.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit house
+    </h2>
+
+    <form action="/modify_house/<%= @the_house.id %>"  method="post" >
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id" value="<%= @the_house.owner_id %>">
+      </div>
+
+      <div>
+        <label for="rooms_count_box">
+          Rooms count
+        </label>
+
+        <input type="text" id="rooms_count_box" name="query_rooms_count" value="<%= @the_house.rooms_count %>">
+      </div>
+
+      <button>
+        Update house
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

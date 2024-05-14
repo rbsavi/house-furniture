@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Room #<%= @the_room.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/rooms">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_room/<%= @the_room.id %>">
+          Delete room
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Room
+      </dt>
+      <dd>
+        <%= @the_room.room %>
+      </dd>
+
+      <dt>
+        Num furniture
+      </dt>
+      <dd>
+        <%= @the_room.num_furniture %>
+      </dd>
+
+      <dt>
+        House
+      </dt>
+      <dd>
+        <%= @the_room.house_id %>
+      </dd>
+
+      <dt>
+        Furnitures count
+      </dt>
+      <dd>
+        <%= @the_room.furnitures_count %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_room.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_room.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit room
+    </h2>
+
+    <form action="/modify_room/<%= @the_room.id %>"  method="post" >
+      <div>
+        <label for="room_box">
+          Room
+        </label>
+
+        <input type="text" id="room_box" name="query_room" value="<%= @the_room.room %>">
+      </div>
+
+      <div>
+        <label for="num_furniture_box">
+          Num furniture
+        </label>
+
+        <input type="text" id="num_furniture_box" name="query_num_furniture" value="<%= @the_room.num_furniture %>">
+      </div>
+
+      <div>
+        <label for="house_id_box">
+          House
+        </label>
+
+        <input type="text" id="house_id_box" name="query_house_id" value="<%= @the_room.house_id %>">
+      </div>
+
+      <div>
+        <label for="furnitures_count_box">
+          Furnitures count
+        </label>
+
+        <input type="text" id="furnitures_count_box" name="query_furnitures_count" value="<%= @the_room.furnitures_count %>">
+      </div>
+
+      <button>
+        Update room
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

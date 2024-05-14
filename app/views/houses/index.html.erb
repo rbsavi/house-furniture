@@ -1,1 +1,102 @@
-Testing
+<div>
+  <div>
+    <h1>
+      List of all houses
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new house
+    </h2>
+
+    <form action="/insert_house" method="post">
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id">
+      </div>
+
+      <div>
+        <label for="rooms_count_box">
+          Rooms count
+        </label>
+
+        <input type="text" id="rooms_count_box" name="query_rooms_count">
+      </div>
+
+      <button>
+        Create house
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Rooms count
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_houses.each do |a_house| %>
+      <tr>
+        <td>
+          <%= a_house.id %>
+        </td>
+
+        <td>
+          <%= a_house.owner_id %>
+        </td>
+
+        <td>
+          <%= a_house.rooms_count %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_house.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_house.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/houses/<%= a_house.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
