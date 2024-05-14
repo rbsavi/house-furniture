@@ -20,7 +20,7 @@ class RoomsController < ApplicationController
   def create
     the_room = Room.new
     the_room.room = params.fetch("query_room_name")
-    the_room.house_id = params.fetch("query_house_id")
+    the_room.house_id = params.fetch("query_house_id").to_i
     the_room.user_id = current_user.id
 
     if the_room.valid?

@@ -12,6 +12,6 @@ class House < ApplicationRecord
 
   belongs_to :user, class_name: "User", foreign_key: "user_id"
 
-  has_many  :rooms, class_name: "Room", foreign_key: "house_id", dependent: :destroy
+  has_many  :rooms, class_name: "Room", foreign_key: "house_id"
 
 end
