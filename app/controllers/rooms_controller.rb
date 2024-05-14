@@ -19,10 +19,9 @@ class RoomsController < ApplicationController
 
   def create
     the_room = Room.new
-    the_room.room = params.fetch("query_room")
-    the_room.num_furniture = params.fetch("query_num_furniture")
+    the_room.room = params.fetch("query_room_name")
     the_room.house_id = params.fetch("query_house_id")
-    the_room.furnitures_count = params.fetch("query_furnitures_count")
+    the_room.user_id = current_user.id
 
     if the_room.valid?
       the_room.save
@@ -37,10 +36,8 @@ class RoomsController < ApplicationController
     the_room = Room.where({ :id => the_id }).at(0)
 
     the_room.room = params.fetch("query_room")
-    the_room.num_furniture = params.fetch("query_num_furniture")
     the_room.house_id = params.fetch("query_house_id")
-    the_room.furnitures_count = params.fetch("query_furnitures_count")
-
+    
     if the_room.valid?
       the_room.save
       redirect_to("/rooms/#{the_room.id}", { :notice => "Room updated successfully."} )

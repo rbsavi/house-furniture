@@ -13,28 +13,24 @@
     <h2>
       Add a new house
     </h2>
+    <% if current_user != nil %>
+      <form action="/insert_house" method="post">
 
-    <form action="/insert_house" method="post">
-      <div>
-        <label for="owner_id_box">
-          Owner
-        </label>
+        <div>
+          <label for="rooms_count_box">
+            House Name
+          </label>
 
-        <input type="text" id="owner_id_box" name="query_owner_id">
-      </div>
+          <input type="text" id="rooms_count_box" name="query_house_name">
+        </div>
 
-      <div>
-        <label for="rooms_count_box">
-          Rooms count
-        </label>
-
-        <input type="text" id="rooms_count_box" name="query_rooms_count">
-      </div>
-
-      <button>
-        Create house
+        <button>
+      </form>
+        Create New House
       </button>
-    </form>
+      <% else %>
+        <p> You must be <a href="/users/sign_in">signed in</a> to add a House </p>
+      <% end %>
   </div>
 </div>
 
@@ -43,16 +39,9 @@
   <div>
     <table border="1">
       <tr>
+        
         <th>
-          ID
-        </th>
-
-        <th>
-          Owner
-        </th>
-
-        <th>
-          Rooms count
+          House Name
         </th>
 
         <th>
@@ -69,16 +58,9 @@
 
       <% @list_of_houses.each do |a_house| %>
       <tr>
-        <td>
-          <%= a_house.id %>
-        </td>
 
         <td>
-          <%= a_house.owner_id %>
-        </td>
-
-        <td>
-          <%= a_house.rooms_count %>
+          <%= a_house.house_name %>
         </td>
 
         <td>

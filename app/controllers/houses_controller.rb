@@ -19,8 +19,8 @@ class HousesController < ApplicationController
 
   def create
     the_house = House.new
-    the_house.owner_id = params.fetch("query_owner_id")
-    the_house.rooms_count = params.fetch("query_rooms_count")
+    the_house.house_name = params.fetch("query_house_name")
+    the_house.user_id = current_user.id
 
     if the_house.valid?
       the_house.save
@@ -33,9 +33,8 @@ class HousesController < ApplicationController
   def update
     the_id = params.fetch("path_id")
     the_house = House.where({ :id => the_id }).at(0)
-
-    the_house.owner_id = params.fetch("query_owner_id")
-    the_house.rooms_count = params.fetch("query_rooms_count")
+    the_house.user_id = current_user.id
+    the_house.house_name = params.fetch("query_house_name")
 
     if the_house.valid?
       the_house.save

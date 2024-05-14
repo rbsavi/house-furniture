@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_14_161827) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_14_205904) do
+  create_table "furnitures", force: :cascade do |t|
+    t.string "item"
+    t.string "image"
+    t.string "description"
+    t.float "price"
+    t.integer "rating"
+    t.boolean "purchased"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
+  create_table "houses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "house_name"
+    t.integer "user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "room"
+    t.integer "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

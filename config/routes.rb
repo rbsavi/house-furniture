@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+
+  root to: "houses#index"
+
   # Routes for the House resource:
 
   # CREATE
@@ -55,13 +60,5 @@ Rails.application.routes.draw do
   get("/delete_room/:path_id", { :controller => "rooms", :action => "destroy" })
 
   #------------------------------
-
-  devise_for :users
-
-  # This is a blank app! Pick your first screen, build out the RCAV, and go from there. E.g.:
-
-  # get "/your_first_screen" => "pages#first"
-
-  root to: "houses#index"
   
 end
