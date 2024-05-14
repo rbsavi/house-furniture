@@ -16,18 +16,12 @@
     <% if current_user != nil %>
       <form action="/insert_house" method="post">
 
-        <div>
-          <label for="rooms_count_box">
-            House Name
-          </label>
+        <label for="rooms_count_box"> House Name: </label>
 
-          <input type="text" id="rooms_count_box" name="query_house_name">
-        </div>
+        <input type="text" id="rooms_count_box" name="query_house_name">
 
-        <button>
+        <button> Add </button>
       </form>
-        Create New House
-      </button>
       <% else %>
         <p> You must be <a href="/users/sign_in">signed in</a> to add a House </p>
       <% end %>

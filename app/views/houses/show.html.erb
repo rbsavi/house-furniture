@@ -31,11 +31,12 @@
 
 <div>
 <form action="/insert_room" method="post">
+
   <label for="room_name_box"> Add Room: </label>
   <input type="text" id="room_name_box" name="query_room_name">
   
   <input type="hidden" id="house_id_box" name="query_house_id" value="<%= @the_house.id %>">
-  
+
   <button> Add </button>
 </form>
 </div>
@@ -45,3 +46,37 @@
 <h1>
     <%= @the_house.house_name %> Rooms
 </h1>
+
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Room
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @the_house.rooms.each do |a_room| %>
+  <tr>
+    <td>
+      <%= a_room.id %>
+    </td>
+
+    <td>
+      <%= a_room.room %>
+    </td>
+
+    <td>
+      <a href="/rooms/<%= a_room.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
