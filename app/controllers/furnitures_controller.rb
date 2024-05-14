@@ -26,12 +26,15 @@ class FurnituresController < ApplicationController
     the_furniture.rating = params.fetch("query_rating")
     the_furniture.purchased = params.fetch("query_purchased", false)
     the_furniture.room_id = params.fetch("query_room_id")
+    the_furniture.link = params.fetch("query_link")
+    the_furniture.user_id = current_user.id
+
 
     if the_furniture.valid?
       the_furniture.save
-      redirect_to("/furnitures", { :notice => "Furniture created successfully." })
+      redirect_to("/rooms/#{the_furniture.room_id}", { :notice => "Furniture created successfully." })
     else
-      redirect_to("/furnitures", { :alert => the_furniture.errors.full_messages.to_sentence })
+      redirect_to("rooms/#{the_furniture.room_id}", { :alert => the_furniture.errors.full_messages.to_sentence })
     end
   end
 

@@ -6,6 +6,7 @@
 #  description :string
 #  image       :string
 #  item        :string
+#  link        :string
 #  price       :float
 #  purchased   :boolean
 #  rating      :integer
