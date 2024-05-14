@@ -1,194 +1,35 @@
+
 <div>
-  <div>
-    <h1>
-      Room #<%= @the_room.id %> details
-    </h1>
+  <a href="/houses/<%= @the_room.house_id %>">
+    Go back
+  </a>
+</div>
 
-    <div>
-      <div>
-        <a href="/rooms">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_room/<%= @the_room.id %>">
-          Delete room
-        </a>
-      </div>
-    </div>
-
-    <dl>
-      <dt>
-        Room
-      </dt>
-      <dd>
-        <%= @the_room.room %>
-      </dd>
-
-      <dt>
-        Num furniture
-      </dt>
-      <dd>
-        <%= @the_room.num_furniture %>
-      </dd>
-
-      <dt>
-        House
-      </dt>
-      <dd>
-        <%= @the_room.house_id %>
-      </dd>
-
-      <dt>
-        Furnitures count
-      </dt>
-      <dd>
-        <%= @the_room.furnitures_count %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_room.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_room.updated_at) %> ago
-      </dd>
-    </dl>
-  </div>
+<div>
+  <a href="/delete_room/<%= @the_room.id %>">
+    Delete Room
+  </a>
 </div>
 
 <hr>
 
+<h1>
+    <%= House.where({ :id => @the_room.house_id }).at(0).house_name %> - <%= @the_room.room %>
+</h1>
 
 <div>
-  <div>
-    <h2>
-      Edit room
-    </h2>
+  <form action="/modify_room/<%= @the_room.id %>"  method="post" >
+    <label for="house_name_box">Edit Room Name: </label>
+    <input type="text" id="room_name_box" name="query_room_name" value="<%= @the_room.room %>">
 
-    <form action="/modify_room/<%= @the_room.id %>"  method="post" >
-      <div>
-        <label for="room_box">
-          Room
-        </label>
-
-        <input type="text" id="room_box" name="query_room" value="<%= @the_room.room %>">
-      </div>
-
-      <div>
-        <label for="num_furniture_box">
-          Num furniture
-        </label>
-
-        <input type="text" id="num_furniture_box" name="query_num_furniture" value="<%= @the_room.num_furniture %>">
-      </div>
-
-      <div>
-        <label for="house_id_box">
-          House
-        </label>
-
-        <input type="text" id="house_id_box" name="query_house_id" value="<%= @the_room.house_id %>">
-      </div>
-
-      <div>
-        <label for="furnitures_count_box">
-          Furnitures count
-        </label>
-
-        <input type="text" id="furnitures_count_box" name="query_furnitures_count" value="<%= @the_room.furnitures_count %>">
-      </div>
-
-      <button>
-        Update room
-      </button>
-    </form>
-  </div>
+    <input type="hidden" name="query_house_id" value="<%= @the_room.house_id %>".to_i>
+      
+    <button> Edit </button>
+  </form>
 </div>
 
-<hr>
 
 
 <h1>
-  <%= @the_house.house_name %> Furniture
+  <%= @the_room.room %> Furniture
 </h1>
-
-<table border="1">
-  <tr>
-    
-    <th>
-      Item
-    </th>
-
-    <th>
-      Image
-    </th>
-
-    <th>
-      Description
-    </th>
-    
-    <th>
-      Price
-    </th>
-    
-    <th>
-      Rate
-    </th>
-    
-    <th>
-      Link
-    </th>
-    
-    <th>
-      Purchased?
-    </th>
-    
-    <th>
-    </th>
-  </tr>
-
-  <% @list_of_furnitures.each do |a_furniture| %>
-  <tr>
-    
-    <td>
-      <%= a_furniture.item%>
-    </td>
-
-    <td>
-      <%= a_furniture.image%> ######
-    </td>
-
-    <td>
-      <%= a_furniture.description%>
-    </td>
-    
-    <td>
-      <%= a_furniture.price%>
-    </td>
-    
-    <td>
-      <%= a_furniture.rating%>
-    </td>
-    
-    <td>
-      <a href="<%= a_furniture.link%>">link</a>
-    </td>
-    
-    <td>
-      <%= a_furniture.purchased%>
-    </td>
-    
-    <td>
-      <a href="/furniture/<%= a_furniture.id%>">Show details</a>
-    </td>
-  </tr>
-  <% end %>
-</table>

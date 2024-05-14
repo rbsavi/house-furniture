@@ -25,17 +25,18 @@ class RoomsController < ApplicationController
 
     if the_room.valid?
       the_room.save
-      redirect_to("/rooms", { :notice => "Room created successfully." })
+      redirect_to("/houses/#{the_room.house_id}", { :notice => "Room created successfully." })
     else
-      redirect_to("/rooms", { :alert => the_room.errors.full_messages.to_sentence })
+      redirect_to("/houses/#{the_room.house_id}", { :alert => the_room.errors.full_messages.to_sentence })
     end
   end
 
   def update
     the_id = params.fetch("path_id")
     the_room = Room.where({ :id => the_id }).at(0)
-
-    the_room.room = params.fetch("query_room")
+    
+    the_room.user_id = current_user.id
+    the_room.room = params.fetch("query_room_name")
     the_room.house_id = params.fetch("query_house_id")
     
     if the_room.valid?
@@ -52,6 +53,6 @@ class RoomsController < ApplicationController
 
     the_room.destroy
 
-    redirect_to("/rooms", { :notice => "Room deleted successfully."} )
+    redirect_to("/houses/#{the_room.house_id}", { :notice => "Room deleted successfully."} )
   end
 end

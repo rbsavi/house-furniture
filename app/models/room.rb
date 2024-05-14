@@ -11,4 +11,7 @@
 #
 class Room < ApplicationRecord
   
+
+  belongs_to :house, class_name: "Room", foreign_key: "room_id"
+
 end
