@@ -31,47 +31,55 @@
 <hr>
 <div>
   <div>
-    <table border="1">
-      <tr>
-        
-        <th>
-          House Name
-        </th>
+    <% if current_user != nil %>
 
-        <th>
-          Created at
-        </th>
+      <table border="1">
+        <tr>
+          
+          <th>
+            House Name
+          </th>
 
-        <th>
-          Updated at
-        </th>
+          <th>
+            Created at
+          </th>
 
-        <th>
-        </th>
-      </tr>
+          <th>
+            Updated at
+          </th>
 
-      <% @list_of_houses.each do |a_house| %>
-      <tr>
+          <th>
+          </th>
+        </tr>
 
-        <td>
-          <%= a_house.house_name %>
-        </td>
+        <% @list_of_houses.each do |a_house| %>
+        <tr>
 
-        <td>
-          <%= time_ago_in_words(a_house.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_house.updated_at) %> ago
-        </td>
+          <td>
+            <%= a_house.house_name %>
+          </td>
 
-        <td>
-          <a href="/houses/<%= a_house.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+          <td>
+            <%= time_ago_in_words(a_house.created_at) %> ago
+          </td>
+          <td>
+            <%= time_ago_in_words(a_house.updated_at) %> ago
+          </td>
+
+          <td>
+            <a href="/houses/<%= a_house.id %>">
+              Show details
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+
+    <% else %>
+      <p> You must be <a href="/users/sign_in">signed in</a> to view the existing houses </p>
+    
+    <%end%>
+  
   </div>
 </div>
 

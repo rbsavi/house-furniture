@@ -1,22 +1,21 @@
 <div>
-  <div>
-    <h1>
-      Furniture #<%= @the_furniture.id %> details
-    </h1>
+  <a href="/rooms/<%= @the_furniture.room_id %>">
+    Go back
+  </a>
+</div>
 
-    <div>
-      <div>
-        <a href="/furnitures">
-          Go back
-        </a>
-      </div>
+<div>
+  <a href="/delete_furniture/<%= @the_furniture.id %>">
+    Delete Furniture
+  </a>
+</div>
 
-      <div>
-        <a href="/delete_furniture/<%= @the_furniture.id %>">
-          Delete furniture
-        </a>
-      </div>
-    </div>
+<hr>
+
+<h1>
+  Details: <%= @the_furniture.item %>
+</h1>
+
 
     <dl>
       <dt>
@@ -44,7 +43,7 @@
         Price
       </dt>
       <dd>
-        <%= @the_furniture.price %>
+        $<%= @the_furniture.price %>
       </dd>
 
       <dt>
@@ -65,22 +64,9 @@
         Room
       </dt>
       <dd>
-        <%= @the_furniture.room_id %>
+        <%= @the_furniture.rooms.room %>
       </dd>
 
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_furniture.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_furniture.updated_at) %> ago
-      </dd>
     </dl>
   </div>
 </div>
@@ -148,7 +134,7 @@
           Room
         </label>
 
-        <input type="text" id="room_id_box" name="query_room_id" value="<%= @the_furniture.room_id %>">
+        <input type="hidden" id="room_id_box" name="query_room_id" value="<%= @the_furniture.room_id %>">
       </div>
 
       <button>
