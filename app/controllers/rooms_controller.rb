@@ -23,6 +23,7 @@ class RoomsController < ApplicationController
     the_room.house_id = params.fetch("query_house_id").to_i
     the_room.user_id = current_user.id
 
+    p the_room
     if the_room.valid?
       the_room.save
       redirect_to("/houses/#{the_room.house_id}", { :notice => "Room created successfully." })

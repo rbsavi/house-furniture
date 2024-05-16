@@ -96,7 +96,7 @@
   <% @the_room.furniture.where(purchased: 1).each do |a_furniture| %>
     <div class="col-md-4 mb-4">
       <div class="card">
-        <img src="<%= a_furniture.image %>" class="card-img-top" alt="...">
+        <img src="<%= a_furniture.image %>" class="card-img-top" style="max-height: 300px;" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= a_furniture.item %></h5>
           <p class="card-text"><%= a_furniture.description %></p>
@@ -115,11 +115,11 @@
 
 <h3 class="text-muted"> Items in Consideration </h3>
 
-<div class="row">
+<div class="row d-flex align-items-stretch">
   <% @the_room.furniture.where(purchased: 0).each do |a_furniture| %>
-    <div class="col-md-4 mb-4">
+    <div class="col-md-4 mb-4 d-flex">
       <div class="card">
-        <img src="<%= a_furniture.image %>" class="card-img-top" alt="...">
+        <img src="<%= a_furniture.image %>" class="card-img-top img-fluid" style="max-height: 300px; width: auto;" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= a_furniture.item %></h5>
           <p class="card-text"><%= a_furniture.description %></p>

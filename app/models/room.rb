@@ -10,9 +10,8 @@
 #  user_id    :integer
 #
 class Room < ApplicationRecord
-  
 
-  belongs_to :house, class_name: "Room", foreign_key: "room_id"
+  belongs_to :house, class_name: "House", foreign_key: "house_id"
 
   has_many :furniture, class_name: "Furniture", foreign_key: "room_id"
 
