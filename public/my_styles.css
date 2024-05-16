@@ -7169,3 +7169,7 @@ a.text-dark:hover, a.text-dark:focus {
     .star.filled {
       color: #ffcc00; /* Color for filled stars */
     }
+
+    .larger-checkbox {
+      transform: scale(1.30); /* Adjust the scale factor as needed */
+    }
