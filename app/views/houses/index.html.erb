@@ -20,7 +20,7 @@
 
         <input type="text" id="rooms_count_box" name="query_house_name">
 
-        <button> Add </button>
+        <button class="btn btn-outline-primary"> Add </button>
       </form>
       <% else %>
         <p> You must be <a href="/users/sign_in">signed in</a> to add a House </p>
@@ -32,8 +32,9 @@
 <div>
   <div>
     <% if current_user != nil %>
-
-      <table border="1">
+    
+      <table class="table">
+        <thead class="table-primary">
         <tr>
           
           <th>
@@ -51,6 +52,7 @@
           <th>
           </th>
         </tr>
+        </thead>
 
         <% @list_of_houses.each do |a_house| %>
         <tr>
