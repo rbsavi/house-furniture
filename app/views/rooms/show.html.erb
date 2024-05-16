@@ -90,91 +90,41 @@
   Furniture List
 </h3>
 
-<table border="1">
-  <tr>
-    
-    <th>
-      Item
-    </th>
-
-    <th>
-      Image
-    </th>
-
-    <th>
-      Description
-    </th>
-    
-    <th>
-      Price
-    </th>
-    
-    <th>
-      Rating
-    </th>
-    
-    <th>
-      Link
-    </th>
-    
-    <th>
-      Purchased?
-    </th>
-    
-    <th>
-    </th>
-  </tr>
-
-  <% @the_room.furniture.each do |a_furniture| %>
-  <tr>
-    
-    <td>
-      <%= a_furniture.item%>
-    </td>
-
-    <td>
-       <img src=<%= a_furniture.image %> style="width: 100px;"> 
-    </td>
-
-    <td>
-      <%= a_furniture.description%>
-    </td>
-    
-    <td>
-      $<%= a_furniture.price%>
-    </td>
-    
-    <td>
-      <%= a_furniture.rating%>
-    </td>
-    
-    <td>
-      <a href="<%=a_furniture.link%>">link</a>
-    </td>
-    
-    <td>
-      <%= a_furniture.purchased%>
-    </td>
-    
-    <td>
-      <a href="/furnitures/<%= a_furniture.id%>">Show details</a>
-    </td>
-  </tr>
-  <% end %>
-</table>
+<h3> Purchased Items </h3>
 
 <div class="row">
-  <% @the_room.furniture.each do |a_furniture| %>
+  <% @the_room.furniture.where(purchased: 1).each do |a_furniture| %>
     <div class="col-md-4 mb-4">
       <div class="card">
         <img src="<%= a_furniture.image %>" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= a_furniture.item %></h5>
           <p class="card-text"><%= a_furniture.description %></p>
-          <p class="card-text">$<%= a_furniture.price %></p>
+          <p class="card-text">Price: $<%= a_furniture.price %></p>
           <p class="card-text">Rating: <%= a_furniture.rating %></p>
-          <a href="<%= a_furniture.link %>" class="btn btn-primary">Link</a>
-          <p class="card-text">Purchased: <%= a_furniture.purchased %></p>
+          <a href="<%= a_furniture.link %>">Link</a>
+          <p></p>
+          <a href="/furnitures/<%= a_furniture.id %>" class="btn btn-secondary">Show Details</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<h3> Items in Consideration </h3>
+
+<div class="row">
+  <% @the_room.furniture.where(purchased: 0).each do |a_furniture| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="<%= a_furniture.image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= a_furniture.item %></h5>
+          <p class="card-text"><%= a_furniture.description %></p>
+          <p class="card-text">Price: $<%= a_furniture.price %></p>
+          <p class="card-text">Rating: <%= a_furniture.rating %></p>
+          <a href="<%= a_furniture.link %>">Link</a>
+          <p></p>
           <a href="/furnitures/<%= a_furniture.id %>" class="btn btn-secondary">Show Details</a>
         </div>
       </div>
