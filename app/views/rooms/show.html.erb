@@ -101,7 +101,15 @@
           <h5 class="card-title"><%= a_furniture.item %></h5>
           <p class="card-text"><%= a_furniture.description %></p>
           <p class="card-text">Price: $<%= a_furniture.price %></p>
-          <p class="card-text">Rating: <%= a_furniture.rating %></p>
+          
+          <p class="card-text rating">
+            <% (1..5).each do |i| %>
+              <span class="star <%= 'filled' if i <= a_furniture.rating %>">
+                &#9733;
+              </span>
+            <% end %>
+          </p>          
+
           <a href="<%= a_furniture.link %>">Link</a>
           <p></p>
           <a href="/furnitures/<%= a_furniture.id %>" class="btn btn-secondary">Show Details</a>
@@ -124,7 +132,15 @@
           <h5 class="card-title"><%= a_furniture.item %></h5>
           <p class="card-text"><%= a_furniture.description %></p>
           <p class="card-text">Price: $<%= a_furniture.price %></p>
-          <p class="card-text">Rating: <%= a_furniture.rating %></p>
+
+          <p class="card-text rating">
+            <% (1..5).each do |i| %>
+              <span class="star <%= 'filled' if i <= a_furniture.rating %>">
+                &#9733;
+              </span>
+            <% end %>
+          </p>
+
           <a href="<%= a_furniture.link %>">Link</a>
           <p></p>
           <a href="/furnitures/<%= a_furniture.id %>" class="btn btn-secondary">Show Details</a>

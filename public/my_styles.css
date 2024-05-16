@@ -7156,3 +7156,16 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 
+    .rating {
+      unicode-bidi: bidi-override;
+      direction: ltr;
+    }
+    
+    .star {
+      color: #ddd;
+      font-size: 20px;
+    }
+    
+    .star.filled {
+      color: #ffcc00; /* Color for filled stars */
+    }

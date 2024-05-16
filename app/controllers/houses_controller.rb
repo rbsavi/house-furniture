@@ -1,8 +1,11 @@
 class HousesController < ApplicationController
   def index
-    matching_houses = House.all
-
-    @list_of_houses = matching_houses.order({ :created_at => :desc })
+    if current_user != nil
+      matching_houses = House.where({ :user_id => current_user.id})
+      @list_of_houses = matching_houses.order({ :created_at => :desc })
+    else
+      @list_of_houses = nil
+    end
 
     render({ :template => "houses/index" })
   end
