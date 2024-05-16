@@ -47,36 +47,20 @@
     <%= @the_house.house_name %> Rooms
 </h1>
 
-
-<table border="1">
-  <tr>
-    <th>
-      ID
-    </th>
-
-    <th>
-      Room
-    </th>
-
-    <th>
-    </th>
-  </tr>
+<div class="row">
 
   <% @the_house.rooms.each do |a_room| %>
-  <tr>
-    <td>
-      <%= a_room.id %>
-    </td>
-
-    <td>
-      <%= a_room.room %>
-    </td>
-
-    <td>
-      <a href="/rooms/<%= a_room.id %>">
-        Show details
-      </a>
-    </td>
-  </tr>
+    
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> <%= a_room.room %></h5>
+          <a href="/rooms/<%= a_room.id %>" class="btn btn-primary">Show Details</a>
+        </div>
+      </div>
+    
+    </div>
+  
   <% end %>
-</table>
+
+</div>

@@ -162,3 +162,22 @@
   </tr>
   <% end %>
 </table>
+
+<div class="row">
+  <% @the_room.furniture.each do |a_furniture| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="<%= a_furniture.image %>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= a_furniture.item %></h5>
+          <p class="card-text"><%= a_furniture.description %></p>
+          <p class="card-text">$<%= a_furniture.price %></p>
+          <p class="card-text">Rating: <%= a_furniture.rating %></p>
+          <a href="<%= a_furniture.link %>" class="btn btn-primary">Link</a>
+          <p class="card-text">Purchased: <%= a_furniture.purchased %></p>
+          <a href="/furnitures/<%= a_furniture.id %>" class="btn btn-secondary">Show Details</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
