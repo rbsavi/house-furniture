@@ -22,9 +22,9 @@
 
         <button class="btn btn-outline-primary"> Add </button>
       </form>
-      <% else %>
-        <p> You must be <a href="/users/sign_in">signed in</a> to add a House </p>
-      <% end %>
+    <% else %>
+      <p> You must be <a href="/users/sign_in">signed in</a> to add a House </p>
+    <% end %>
   </div>
 </div>
 
@@ -32,56 +32,28 @@
 <div>
   <div>
     <% if current_user != nil %>
-    
-      <table class="table">
-        <thead class="table-primary">
-        <tr>
-          
-          <th>
-            House Name
-          </th>
-
-          <th>
-            Created at
-          </th>
-
-          <th>
-            Updated at
-          </th>
-
-          <th>
-          </th>
-        </tr>
-        </thead>
-
+      
+      <div class="row">
+      
         <% @list_of_houses.each do |a_house| %>
-        <tr>
-
-          <td>
-            <%= a_house.house_name %>
-          </td>
-
-          <td>
-            <%= time_ago_in_words(a_house.created_at) %> ago
-          </td>
-          <td>
-            <%= time_ago_in_words(a_house.updated_at) %> ago
-          </td>
-
-          <td>
-            <a href="/houses/<%= a_house.id %>">
-              Show details
-            </a>
-          </td>
-        </tr>
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title"><%= a_house.house_name %></h5>
+                <p class="card-text">Created <%= time_ago_in_words(a_house.created_at) %> ago</p>
+                <p class="card-text">Updated <%= time_ago_in_words(a_house.updated_at) %> ago</p>
+                <a href="/houses/<%= a_house.id %>" class="btn btn-primary">Show Details</a>
+              </div>
+            </div>
+          </div>
         <% end %>
-      </table>
+      </div>
 
     <% else %>
       <p> You must be <a href="/users/sign_in">signed in</a> to view the existing houses </p>
-    
+
     <%end%>
-  
+
   </div>
 </div>
 
