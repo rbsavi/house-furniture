@@ -1,7 +1,7 @@
 <div>
   <div>
-    <h1>
-      List of all houses
+    <h1 class="text-primary">
+      List of Houses
     </h1>
   </div>
 </div>
@@ -11,16 +11,15 @@
 <div>
   <div>
     <h2>
-      Add a new house
     </h2>
     <% if current_user != nil %>
       <form action="/insert_house" method="post">
-
-        <label for="rooms_count_box"> House Name: </label>
-
-        <input type="text" id="rooms_count_box" name="query_house_name">
-
-        <button > Add </button>
+        <div class="row g-3">
+          <div class="col-sm-3">
+            <input type="text" class="form-control" placeholder="Add a new house" aria-label="House Name" name="query_house_name">
+          </div>
+          <button class="btn btn-primary"> Add </button>
+        </div>
       </form>
     <% else %>
       <p> You must be <a href="/users/sign_in">signed in</a> to add a House </p>

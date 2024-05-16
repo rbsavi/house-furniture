@@ -14,24 +14,25 @@
 <hr>
 
 <h1 class="text-primary">
-    <%= House.where({ :id => @the_room.house_id }).at(0).house_name %> - <%= @the_room.room %>
+ <%= @the_room.room %>
 </h1>
 
 <div>
   <form action="/modify_room/<%= @the_room.id %>"  method="post" >
-    <label for="house_name_box">Edit Room Name: </label>
-    <input type="text" id="room_name_box" name="query_room_name" value="<%= @the_room.room %>">
-
+    <div class="row g-3">
+      <div class="col-sm-3">
+        <input type="text" class="form-control" value="<%= @the_room.room %>">
+      </div>
+      <button class="btn btn-primary"> Edit </button>
+    </div>
     <input type="hidden" name="query_house_id" value="<%= @the_room.house_id %>".to_i>
-      
-    <button> Edit </button>
   </form>
 </div>
 
 <hr>
 
 <h2 class="text-primary">
-  <%= @the_room.room %>: Add new Furniture
+  Add new Furniture
 </h2>
 
 <br>
