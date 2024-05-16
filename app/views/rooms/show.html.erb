@@ -13,7 +13,7 @@
 
 <hr>
 
-<h1>
+<h1 class="text-primary">
     <%= House.where({ :id => @the_room.house_id }).at(0).house_name %> - <%= @the_room.room %>
 </h1>
 
@@ -30,7 +30,7 @@
 
 <hr>
 
-<h1>
+<h1 class="text-primary">
   <%= @the_room.room %> Furniture
 </h1>
 
@@ -86,11 +86,11 @@
 
 <hr>
 
-<h3>
+<h1 class="text-primary">
   Furniture List
-</h3>
+</h1>
 
-<h3> Purchased Items </h3>
+<h3 class="text-muted"> Purchased Items </h3>
 
 <div class="row">
   <% @the_room.furniture.where(purchased: 1).each do |a_furniture| %>
@@ -111,7 +111,9 @@
   <% end %>
 </div>
 
-<h3> Items in Consideration </h3>
+<hr>
+
+<h3 class="text-muted"> Items in Consideration </h3>
 
 <div class="row">
   <% @the_room.furniture.where(purchased: 0).each do |a_furniture| %>

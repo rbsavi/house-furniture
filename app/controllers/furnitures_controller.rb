@@ -64,6 +64,6 @@ class FurnituresController < ApplicationController
 
     the_furniture.destroy
 
-    redirect_to("/furnitures", { :notice => "Furniture deleted successfully."} )
+    redirect_to("/rooms/#{the_furniture.room_id}", { :notice => "Furniture deleted successfully."} )
   end
 end

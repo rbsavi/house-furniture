@@ -34,12 +34,12 @@
     <% if current_user != nil %>
       
       <div class="row">
-      
+
         <% @list_of_houses.each do |a_house| %>
           <div class="col-md-4">
             <div class="card mb-4">
               <div class="card-body">
-                <h5 class="card-title"><%= a_house.house_name %></h5>
+                <h5 class="card-title text-primary"><%= a_house.house_name %></h5>
                 <p class="card-text">Created <%= time_ago_in_words(a_house.created_at) %> ago</p>
                 <p class="card-text">Updated <%= time_ago_in_words(a_house.updated_at) %> ago</p>
                 <a href="/houses/<%= a_house.id %>" class="btn btn-primary">Show Details</a>
